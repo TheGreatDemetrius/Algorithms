@@ -1,2 +1,2 @@
+![java](/java.png)
 # Algorithms
-Simple and clear algorithms in Java
