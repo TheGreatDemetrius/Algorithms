@@ -5,12 +5,13 @@ public class QuickSort {
         for (int element : array)
             System.out.println(element);
     }
+
     static void qSort(int[] array, int first, int last) {
         if (first < last) {
             int left = first, right = last, middle = array[(left + right) / 2];
             while (left < right) {
-                while (array[left] > middle) left++;
-                while (array[right] < middle) right--;
+                while (array[left] < middle) left++;
+                while (array[right] > middle) right--;
                 if (left <= right) {
                     int temp = array[left];
                     array[left] = array[right];
