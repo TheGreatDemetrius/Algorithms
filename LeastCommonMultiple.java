@@ -8,6 +8,6 @@ public class LeastCommonMultiple {
     }
 
     static int lcm(int a, int b) {
-        return a * b / gcd(a, b);
+        return a / gcd(a, b) * b;
     }
 }
