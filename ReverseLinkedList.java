@@ -1,4 +1,4 @@
-class ReverseLinkedList {
+public class ReverseLinkedList {
     public static void main(String[] args) {
         SinglyLinkedList<Person> people = new SinglyLinkedList<>();
         people.addFirst(new Person("Bob", 24));
