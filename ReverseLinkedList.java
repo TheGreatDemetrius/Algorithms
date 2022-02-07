@@ -1,15 +1,11 @@
 public class ReverseLinkedList {
     public static void main(String[] args) {
-        SinglyLinkedList<Person> people = new SinglyLinkedList<>();
-        people.addFirst(new Person("Bob", 24));
-        people.addFirst(new Person("Carol", 32));
-        people.addFirst(new Person("Ted", 40));
-        people.addFirst(new Person("Alice", 48));
-        people.reverse();
-        people.print();
-    }
-
-    record Person(String name, int age) {
+        SinglyLinkedList<Integer> numbers = new SinglyLinkedList<>();
+        numbers.addFirst(1);
+        numbers.addFirst(2);
+        numbers.addFirst(3);
+        numbers.reverse();
+        numbers.print();
     }
 
     static class SinglyLinkedList<E> {
