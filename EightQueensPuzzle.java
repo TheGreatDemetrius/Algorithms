@@ -1,40 +1,41 @@
 class EightQueensPuzzle {
     static final int N = 8;
-
+    
     public static void main(String[] args) {
-        int[][] board = new int[N][N];
-        if (!solveNQueens(board, 0))
+        int[] queens = new int[N];
+        if (solveNQueens(queens, 0))
+            printBoard(queens);
+        else
             System.out.println("No solution found");
     }
-
-    static boolean solveNQueens(int[][] board, int col) {
-        if (col == N) {
-            for (int[] row : board)
-                System.out.println(java.util.Arrays.toString(row));
-            System.out.println();
+    
+    static boolean solveNQueens(int[] queens, int col) {
+        if (col == N)
             return true;
-        }
-        for (int i = 0; i < N; i++) {
-            if (isSafe(board, i, col)) {
-                board[i][col] = 1;
-                if (solveNQueens(board, col + 1))
+        for (int row = 0; row < N; row++) {
+            if (isSafe(queens, row, col)) {
+                queens[col] = row;
+                if (solveNQueens(queens, col + 1))
                     return true;
-                board[i][col] = 0;
             }
         }
         return false;
     }
-
-    static boolean isSafe(int[][] board, int row, int col) {
-        for (int x = 0; x < col; x++)
-            if (board[row][x] == 1)
+    
+    static boolean isSafe(int[] queens, int row, int col) {
+        for (int i = 0; i < col; i++) {
+            int placedQueenRow = queens[i];
+            if (placedQueenRow == row || Math.abs(placedQueenRow - row) == Math.abs(i - col))
                 return false;
-        for (int x = row, y = col; x >= 0 && y >= 0; x--, y--)
-            if (board[x][y] == 1)
-                return false;
-        for (int x = row, y = col; x < N && y >= 0; x++, y--)
-            if (board[x][y] == 1)
-                return false;
+        }
         return true;
+    }
+    
+    static void printBoard(int[] queens) {
+        for (int row = 0; row < N; row++) {
+            for (int col = 0; col < N; col++)
+                System.out.print(queens[col] == row ? "Q " : ". ");
+            System.out.println();
+        }
     }
 }
